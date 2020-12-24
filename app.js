@@ -57,14 +57,9 @@ app.get("/show",async (req, res) => {
     // console.log('data:',data)
   });
 
-  // setTimeout(() => {
-  //   // console.log("header:", header);
-  //   // console.log("data:", data);
-  //   res.render("showTable", { header: header, data: data });
-  // }, 500);
+
   res.render("showTable", { header: header, data: data });
 
-  // res.render('showTable',{ header:header,data:data   })
 });
 
 const port = 3000;
