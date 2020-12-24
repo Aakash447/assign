@@ -34,11 +34,11 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.get("/show", (req, res) => {
+app.get("/show",async (req, res) => {
   let header = [];
   let data = {};
   const workbook = new ExcelJS.Workbook();
-  workbook.xlsx.readFile("users.xlsx").then(function () {
+  await  workbook.xlsx.readFile("users.xlsx").then(function () {
     var worksheet = workbook.getWorksheet("users");
     worksheet.eachRow({ includeEmpty: true }, function (row, rowNumber) {
       //   console.log("Row " + rowNumber + " = " + JSON.stringify(row.values));
@@ -57,11 +57,12 @@ app.get("/show", (req, res) => {
     // console.log('data:',data)
   });
 
-  setTimeout(() => {
-    // console.log("header:", header);
-    // console.log("data:", data);
-    res.render("showTable", { header: header, data: data });
-  }, 500);
+  // setTimeout(() => {
+  //   // console.log("header:", header);
+  //   // console.log("data:", data);
+  //   res.render("showTable", { header: header, data: data });
+  // }, 500);
+  res.render("showTable", { header: header, data: data });
 
   // res.render('showTable',{ header:header,data:data   })
 });
