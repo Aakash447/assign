@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 app.get("/", async (req, res) => {
   try {
     let data1 = await axios.get("https://jsonplaceholder.typicode.com/users/");
-    // console.log("data1:", data1.data);
+    console.log("data1:", data1.data);
 
     const workbook = new ExcelJS.Workbook();
     const sheet = workbook.addWorksheet("users");
@@ -62,7 +62,8 @@ app.get("/show",async (req, res) => {
 
 });
 
-const port = 3000;
+const port = process.env.PORT ||  8974;
+// console.log('process.env.PORT:',process.env.PORT)
 app.listen(port, () => {
-  console.log("Server is listening at port 3000");
+  console.log(`Server is listening at port ${port}`);
 });
